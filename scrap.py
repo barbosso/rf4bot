@@ -1,14 +1,16 @@
 import requests
-from vars import vk_token, vk_group
+from vars import vk_token, vk_group, water_names
 import time
 
 
-
-
-def search_post(name):
+def search_post(water, fish=None):
+    if fish is None:
+        query = f'#{water}'
+    else:
+        query = f'#{water}, {fish}'
     data = {
         'domain': 'pp4wikipedia',
-        'query': f'#{name}',
+        'query': query,
         'owners_only': '0',
         'count': '5',
         'extended': '0',
